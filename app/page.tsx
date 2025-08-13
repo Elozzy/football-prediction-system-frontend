@@ -12,10 +12,12 @@ export default function Home() {
   const [predictions, setPredictions] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
   const fetchPredictions = async () => {
     try {
       setLoading(true);
-      const res = await axios.get(`http://localhost:5000/predictions`, {
+      const res = await axios.get(`${API_URL}/predictions`, {
         params: { date },
       });
       setPredictions(res.data);
